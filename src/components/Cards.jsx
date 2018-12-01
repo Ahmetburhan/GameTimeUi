@@ -31,12 +31,9 @@ export default class Cards extends React.Component {
         // console.log("props coming here", this.props)
         const performers = this.props.performers;
         
-
         return (
 
             <div>
-            
-
                 <h2>{performers && performers.length} Tickets Found</h2>
             <div className="card-columns">
                     {performers && performers.map((performer, index) => {

@@ -26,11 +26,12 @@ class App extends Component {
             .get(`https://mobile-staging.gametime.co/v1/performers`).then(res => {
                 if (res.ok) {
                     console.log(res.body)
-            
+                    window.performers = res.body.performers;
+                    console.log(window.performers)
                     this.setState({
                         performers : res.body.performers
-                    
                     })
+
                 } else {
 
                     console.log('We found nothing')
@@ -52,25 +53,12 @@ class App extends Component {
         this.setState({
             query: event.target.value,
         });
-        let filteredPerformers = this.state.performers.filter(performer => performer.category_group == this.state.query.toLowerCase());
+        let filteredPerformers = window.performers.filter(performer => performer.category_group == this.state.query.toLowerCase());
         console.log(this.state.query.toLowerCase())
         console.log(filteredPerformers)
         this.setState({
             performers: filteredPerformers,
         });
-        // request
-        //     .get(`https://mobile-staging.gametime.co/v1/performers`).then(res => {
-        //         if (res.ok) {
-        //             console.log("new handle click",res.body)
-        //             this.setState({
-        //                 performers: filteredPerformers,
-
-        //             })
-        //         } else {
-        //             console.log('We found nothing')
-        //         }
-        //     })
-
     }
 
     render() {
