@@ -10,6 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             performers: [],
+            query: "",
 
 
         }
@@ -49,12 +50,13 @@ class App extends Component {
         console.log('New ticket search was submitted: ' + this.state.query);
         event.preventDefault();
         this.setState({ query: event.target.value });
+        let filteredPerformers = this.state.performers.filter(performer => performer.category_group == this.state.query);
         request
             .get(`https://mobile-staging.gametime.co/v1/performers`).then(res => {
                 if (res.ok) {
                     console.log("new handle click",res.body)
                     this.setState({
-                        pictures: res.body.results
+                        performers: filteredPerformers,
 
                     })
                 } else {
@@ -71,7 +73,7 @@ class App extends Component {
 
             <Form onSubmit={this.onSubmit}>
                 <Label> 
-                    <Input type="text" placeholder="search photos" value={this.state.value} onChange={this.handleChange} />
+                    <Input type="text" placeholder="sport,concert,etc." value={this.state.value} onChange={this.handleChange} />
                 </Label>
                 <Button type="submit" value="Submit">Submit </Button>
             </Form>

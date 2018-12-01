@@ -37,29 +37,26 @@ export default class Cards extends React.Component {
             <div>
             
 
-                <h2>{performers && performers.length} Photos Found</h2>
+                <h2>{performers && performers.length} Tickets Found</h2>
             <div className="card-columns">
                     {performers && performers.map((performer, index) => {
                     // console.log(performers)
                     // console.log(index)
                     return (
-
-                    
                              <Col>
 
                             <Card id="photoCard" inverse style={{
                                 fontFamily: 'Helvetica Neue',
                                 marginBottom: "1em"
                             }} >
-                                <CardImg width="100%" onClick={this.toggle} style={{ marginBottom: '1rem' }} className="photo" src={performer.hero_image_url} alt="Card image cap" />
+                                <CardImg width="100%" onClick={this.toggle} style={{ marginBottom: '1rem' }} className="photo" src={performer.hero_image_url || "https://chefschoice.com/wp-content/uploads/placeholder-waffle.jpg"} alt="Card image cap" />
                                 <CardImgOverlay>
-                                    <CardTitle>{performer.short_name}</CardTitle>
+                                    <CardTitle>{performer.name}</CardTitle>
                                     <CardSubtitle>
                                         <i className="fab fa-instagram">   {performer.medium_name}</i>
 
                                   </CardSubtitle>
-                                    <CardText>#{performer.medium_name}  #{performer.medium_name}  
-                                        #{performer.medium_name} 
+                                    <CardText>#{performer.slug}
                                     </CardText>
                                     <CardText>
                                         <i className="fas fa-heart" style={{ fontSize: "1.5rem", color: "white", float: "right" }}> #{performer.medium_name}</i>                      
