@@ -25,7 +25,7 @@ class ModalExample extends React.Component {
         return (
             <div>
                 <Button color="info" onClick={this.toggle}>More info{this.props.buttonLabel}</Button>
-                <Modal isOpen={this.state.modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 200 }}
+                <Modal size="lg" isOpen={this.state.modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 200 }}
                     toggle={this.toggle} className={this.props.className}>
                     <ModalHeader style={{
                         backgroundColor: `#${bgColor}`,
@@ -33,21 +33,23 @@ class ModalExample extends React.Component {
                     <ModalBody style={{
                         backgroundColor: `#${bgColor}`,
                     }}>
-                        <h4> You can reach me <i className="fab fa-instagram">   {this.props.performer.slug}</i></h4>
+                        <h4> You can reach'em <i className="fab fa-instagram">   {this.props.performer.slug}</i></h4>
                         <CardImg style={{
                             fontFamily: 'Helvetica Neue',
                             marginBottom: "1em",
                             float: "right",
                             display: "inline-flex"
                         }} className="photo" src={this.props.performer.hero_image_url} alt="Card image cap" />
-                        <CardText>Instagram: {this.props.performer.category_group}</CardText>
+                        <CardText>Instagram: #{this.props.performer.slug}</CardText>
+                        <CardText>ID# {this.props.performer.id}</CardText>
+
                       
           </ModalBody>
                     <ModalFooter style={{
                         backgroundColor: `#${bgColor}`,
                     }}>
-                        <Button color="primary" href={`mailto:${this.props.performer.category_group}?subject=Hi ${this.props.performer.category_group} Let's chat!&body=Thanks to GameTime Group, Lets schedule some time to meet up. Looking forward to talking to you.`}  onClick={this.toggle}>Send me e-Mail</Button>{' '}
-                        <Button color="danger" onClick={this.toggle}>Cancel</Button>
+                        <Button color="info" href={`mailto:${this.props.performer.category_group}?subject=Hi ${this.props.performer.category_group} Let's chat!&body=Thanks to GameTime Group, Lets schedule some time to meet up. Looking forward to talking to you.`}  onClick={this.toggle}>Send'em e-Mail</Button>{' '}
+                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>

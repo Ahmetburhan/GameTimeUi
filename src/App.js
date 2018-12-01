@@ -3,8 +3,6 @@ import request from 'superagent';
 import Cards from './components/Cards';
 import { Button, Form, Label, Input, FormText, Container, Row, Col} from 'reactstrap';
 
-
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -12,22 +10,19 @@ class App extends Component {
             performers: [],
             query: "",
             filteredPerformers:[],
-
         }
      this.onSubmit = this.onSubmit.bind(this);
      this.handleChange = this.handleChange.bind(this);
 
     }
 
-
-
     componentDidMount() {
         request
             .get(`https://mobile-staging.gametime.co/v1/performers`).then(res => {
                 if (res.ok) {
-                    console.log(res.body)
+                    // console.log(res.body)
                     window.performers = res.body.performers;
-                    console.log(window.performers)
+                    // console.log(window.performers)
                     this.setState({
                         performers : res.body.performers
                     })
@@ -44,20 +39,26 @@ class App extends Component {
 
     handleChange(event) {
         this.setState({ query: event.target.value });
-        console.log(this.state.query)
+        // console.log(this.state.query)
     }
 
-    onSubmit(event) {
+    onSubmit = (event) =>{
         console.log('New ticket search was submitted: ' + this.state.query);
         event.preventDefault();
         this.setState({
             query: event.target.value,
         });
-        let filteredPerformers = window.performers.filter(performer => performer.category_group == this.state.query.toLowerCase());
-        console.log(this.state.query.toLowerCase())
-        console.log(filteredPerformers)
+        let filteredPerformers = window.performers.filter(performer => performer.category_group == this.state.query && this.state.query.toLowerCase());
+        // console.log(this.state.query.toLowerCase())
+        // console.log(filteredPerformers)
         this.setState({
             performers: filteredPerformers,
+        });
+        event.target.reset() 
+       }
+    onReset = () => {
+        this.setState({
+            performers: window.performers
         });
     }
 
@@ -68,9 +69,11 @@ class App extends Component {
 
             <Form onSubmit={this.onSubmit}>
                 <Label> 
-                    <Input type="text" placeholder="sport,concert,etc." value={this.state.value} onChange={this.handleChange} />
+                    <Input type="text" placeholder="sport,concert,etc." value={this.state.value} onChange={this.handleChange} id="filter"/>
                 </Label>
-                <Button type="submit" value="Submit">Submit </Button>
+                <Button color="success" type="submit" value="Submit">Submit </Button>
+                <Button type="button" onClick={this.onReset}>Reset </Button>
+
             </Form>
 
             <Container fluid>
