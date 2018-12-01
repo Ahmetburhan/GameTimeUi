@@ -1,0 +1,126 @@
+
+
+ul {
+    list-style: none;
+}
+
+.header {
+    margin: 0px;
+    /*padding-bottom: 80px;*/
+    color: white;
+    background: gray;
+    /*text-align: center;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+}
+
+.header h1 {
+    margin-top: 0px;
+    font-size: 1.7rem;
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+    drop-shadow:(12px 12px 7px rgba(0, 0, 0, 0.5));
+    margin-top: 12px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+}
+
+/*h1 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}*/
+
+#userPreferences {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#searchResults {
+    background: aqua;
+    margin: 0px auto;
+    width: 50%;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.photo {
+    /* margin: 5px 10px;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    background: gray;
+    width: 150px; */
+    height: 100%;
+    border-radius: 18px;
+
+    /* width: 325px; */
+}
+.photo:hover{
+    background: gray;
+    height: 100%;
+
+}
+
+.name, .age, .catchphrase {
+    margin: 0px 10px;
+}
+
+.col {
+        flex-basis: 0;
+        flex-grow: 1;
+        /* max-width: 100%; */
+       display: inline-block;
+
+}
+.radio{
+    display: block;
+}
+.radioSelect {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px;   
+}
+input[type=radio] {
+    padding: 5px;
+    margin: 5px;
+}
+label {
+    display: inline-block;
+    margin-top: 1.6rem;
+    margin-bottom: .5rem;
+}
+
+.card{
+    border: none;
+}
+
+#headerImg {
+    float: left;
+    width: 200px;
+    -webkit-filter: drop-shadow(1px 5px 2px rgba(0, 0, 0, 0.5));
+    
+
+}
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* padding: 1.25rem; */
+    padding-top: 1.2em;
+    text-align: left;
+    padding-left: 1.2rem;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    /* background: rgba(75, 82, 118, 0.6); */
+    visibility: hidden;
+    transition: .4s;
+    transform: translateY(1em);
+
+}
+
+#photoCard:hover .card-img-overlay {
+    visibility: visible;
+    opacity: 1;
+}
