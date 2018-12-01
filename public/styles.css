@@ -8,7 +8,7 @@ ul {
     margin: 0px;
     /*padding-bottom: 80px;*/
     color: white;
-    background: gray;
+    background: #333;
     /*text-align: center;*/
     display: flex;
     align-items: center;
@@ -45,16 +45,10 @@ ul {
 }
 
 .photo {
-    /* margin: 5px 10px;
-    padding: 5px;
-    border-radius: 50%;
-    border: 1px solid gray;
-    background: gray;
-    width: 150px; */
+
     height: 100%;
     border-radius: 18px;
 
-    /* width: 325px; */
 }
 .photo:hover{
     background: gray;

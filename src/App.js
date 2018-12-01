@@ -11,7 +11,7 @@ class App extends Component {
         this.state = {
             performers: [],
             query: "",
-
+            filteredPerformers:[],
 
         }
      this.onSubmit = this.onSubmit.bind(this);
@@ -43,26 +43,33 @@ class App extends Component {
 
     handleChange(event) {
         this.setState({ query: event.target.value });
-        // console.log(this.state.query)
+        console.log(this.state.query)
     }
 
     onSubmit(event) {
         console.log('New ticket search was submitted: ' + this.state.query);
         event.preventDefault();
-        this.setState({ query: event.target.value });
-        let filteredPerformers = this.state.performers.filter(performer => performer.category_group == this.state.query);
-        request
-            .get(`https://mobile-staging.gametime.co/v1/performers`).then(res => {
-                if (res.ok) {
-                    console.log("new handle click",res.body)
-                    this.setState({
-                        performers: filteredPerformers,
+        this.setState({
+            query: event.target.value,
+        });
+        let filteredPerformers = this.state.performers.filter(performer => performer.category_group == this.state.query.toLowerCase());
+        console.log(this.state.query.toLowerCase())
+        console.log(filteredPerformers)
+        this.setState({
+            performers: filteredPerformers,
+        });
+        // request
+        //     .get(`https://mobile-staging.gametime.co/v1/performers`).then(res => {
+        //         if (res.ok) {
+        //             console.log("new handle click",res.body)
+        //             this.setState({
+        //                 performers: filteredPerformers,
 
-                    })
-                } else {
-                    console.log('We found nothing')
-                }
-            })
+        //             })
+        //         } else {
+        //             console.log('We found nothing')
+        //         }
+        //     })
 
     }
 
