@@ -1,14 +1,14 @@
 {
   "version": "1.0.0",
-  "description": "",
+  "description": "Game Time Challange",
   "main": "index.js",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Ahmet Koylan",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "7.1.0",
     "babel-core": "6.24.1",
@@ -94,5 +94,17 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "name": "gametimeui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmetburhan/GameTimeUi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ahmetburhan/GameTimeUi/issues"
+  },
+  "homepage": "https://github.com/Ahmetburhan/GameTimeUi#readme",
+  "keywords": [
+    "gamatime"
+  ]
 }
