@@ -49,7 +49,7 @@ export default class Cards extends React.Component {
                                 fontFamily: 'Helvetica Neue',
                                 marginBottom: "1em"
                             }} >
-                                <CardImg width="100%" onClick={this.toggle} style={{ marginBottom: '1rem' }} className="photo" src={performer.hero_image_url || "https://chefschoice.com/wp-content/uploads/placeholder-waffle.jpg"} alt="Card image cap" />
+                                <CardImg onClick={this.toggle} style={{ marginBottom: '1rem' }} className="photo" src={performer.hero_image_url || "https://chefschoice.com/wp-content/uploads/placeholder-waffle.jpg"} alt="Card image cap" />
                                 <CardImgOverlay>
                                     <CardTitle>{performer.name}</CardTitle>
                                     <CardSubtitle>

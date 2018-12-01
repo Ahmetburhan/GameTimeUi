@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import request from 'superagent';
 import Cards from './components/Cards';
-import { Button, Form, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, Label, Input, FormText, Container, Row, Col} from 'reactstrap';
 
 
 
@@ -85,7 +85,8 @@ class App extends Component {
                 <Button type="submit" value="Submit">Submit </Button>
             </Form>
 
-
+            <Container fluid>
+                <Row>
             <Cards handleChange = {
                 this.handleChange
             }
@@ -93,6 +94,9 @@ class App extends Component {
                     this.state.performers
             }
           />
+          </Row>
+            </Container>
+
 
             </div>
         )
