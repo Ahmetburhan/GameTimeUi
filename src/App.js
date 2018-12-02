@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import request from 'superagent';
-import Cards from './components/Cards';
-import { Button, Form, Label, Input, FormText, Container, Row, Col} from 'reactstrap';
-
+//enabling lazy loading
+//import Cards from './components/Cards';
+import { Button, Form, Label, Input, Container, Row,} from 'reactstrap';
+const Cards = lazy(() => import('./components/Cards'));
 class App extends Component {
     constructor(props) {
         super(props);
@@ -48,7 +49,7 @@ class App extends Component {
         this.setState({
             query: event.target.value,
         });
-        let filteredPerformers = window.performers.filter(performer => performer.category_group == this.state.query && this.state.query.toLowerCase());
+        let filteredPerformers = window.performers.filter(performer => performer.category_group === this.state.query && this.state.query.toLowerCase());
         // console.log(this.state.query.toLowerCase())
         // console.log(filteredPerformers)
         this.setState({
@@ -78,6 +79,7 @@ class App extends Component {
 
             <Container fluid>
                 <Row>
+           <Suspense fallback={<div><h1 className="banner">Page is loading, Please Wait!...</h1></div>}>
             <Cards handleChange = {
                 this.handleChange
             }
@@ -85,6 +87,7 @@ class App extends Component {
                     this.state.performers
             }
           />
+            </Suspense>
           </Row>
             </Container>
 

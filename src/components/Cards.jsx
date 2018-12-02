@@ -1,9 +1,11 @@
 import React from 'react';
 import {
-    Col, Card, CardImg, CardText, CardBody, CardImgOverlay,
-    CardTitle, CardSubtitle, Button, Tooltip, UncontrolledTooltip, Popover, PopoverHeader, PopoverBody, Collapse
+    Col, Card, CardImg, CardText, CardImgOverlay,
+    CardTitle, CardSubtitle, 
 } from 'reactstrap';
 import ModalUser from './ModalUser';
+import LazyLoad from 'react-lazyload';
+
 
 export default class Cards extends React.Component {
     constructor(props) {
@@ -34,7 +36,7 @@ export default class Cards extends React.Component {
         return (
 
             <div>
-                <h2>{performers && performers.length} Tickets Found</h2>
+                <h1 className="banner">{performers && performers.length} Tickets Found</h1>
             <div className="card-columns">
                     {performers && performers.map((performer, index) => {
                     // console.log(performers)
@@ -46,7 +48,9 @@ export default class Cards extends React.Component {
                                 fontFamily: 'Helvetica Neue',
                                 marginBottom: "1em"
                             }} >
+                                <LazyLoad height={200} >
                                 <CardImg onClick={this.toggle} style={{ marginBottom: '1rem' }} className="photo" src={performer.hero_image_url || "https://chefschoice.com/wp-content/uploads/placeholder-waffle.jpg"} alt="Card image cap" />
+                                </LazyLoad>
                                 <CardImgOverlay>
                                     <CardTitle>{performer.name}</CardTitle>
                                     <CardSubtitle>
