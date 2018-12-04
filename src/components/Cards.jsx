@@ -6,6 +6,8 @@ import {
 import ModalUser from './ModalUser';
 import LazyLoad from 'react-lazyload';
 
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 
 export default class Cards extends React.Component {
     constructor(props) {
@@ -33,6 +35,27 @@ export default class Cards extends React.Component {
         // console.log("props coming here", this.props)
         const performers = this.props.performers;
         
+        //disabling the logic due to CORS Error on server
+        // Access to fetch at 'https://images.gametime.co/cbbsdsu/hero@4x.jpg' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.If an opaque response serves your needs, set the request's mode to 'no- cors' to fetch the resource with CORS disabled.
+        let imgChecker = function (url) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr && xhr.status === 200) {
+                    console.log('DONE', xhr.status, "im loading image");
+                    return url;
+                } else {
+                    console.log('DONE', xhr.status, "Sorry no image found, im loading default image");
+                    return "https://i.pinimg.com/originals/4d/79/e4/4d79e45299ba276f530cbda84f5eca05.gif";
+
+                }
+            };
+
+            xhr.send(null);
+        }
+
+        
+
+        
         return (
 
             <div>
@@ -49,7 +72,7 @@ export default class Cards extends React.Component {
                                 marginBottom: "1em"
                             }} >
                                 <LazyLoad height={200} >
-                                <CardImg onClick={this.toggle} style={{ marginBottom: '1rem' }} className="photo" src={performer.hero_image_url || "https://chefschoice.com/wp-content/uploads/placeholder-waffle.jpg"} alt="Card image cap" />
+                        <CardImg onClick={this.toggle} style={{ marginBottom: '1rem' }} className="photo" src={performer.hero_image_url /*imageChecker2(performer.hero_image_url)*/} alt="Card image cap" />
                                 </LazyLoad>
                                 <CardImgOverlay>
                                     <CardTitle>{performer.name}</CardTitle>
